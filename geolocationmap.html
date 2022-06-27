@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Geo Location</title>
+    <style>
+        #demo{
+            height: 200px;
+            width:  200px;
+        }
+    </style>
+    <script
+        src="https://maps.googleapis.com/maps/api/js">
+    </script>
+</head>
+<body>
+    <h1>Geo Location</h1>
+    Geolocation or Geographical location refers to a position on the Earth. Your absolute geographic location is defined by two
+    coordinates,longitude and latitude. Longitude and Latitude can be defined on the globe with vertical and horizontal lines
+    respectively. These two coordinates can be used to give specific locations independent of an outside reference point.
+    <h2>Geolocation API(Aplication Program Interfece</h2>
+    The Geolocation API allows the user to provide their location to web applications if they so desire. For privacy reasons,
+    the user is asked for permission to report location information.
+    <h3>Concepts and usage</h3>
+    The Geolocation API is accessed via a call to navigator.geolocation; this will cause the user's browser to ask them for
+    permission to access their location data. If they accept, then the browser will use the best available functionality on
+    the device to access this information (for example, GPS).
+    The developer can now access this location information in a couple of different ways:
+    Geolocation.getCurrentPosition(): Retrieves the device's current location.
+    Geolocation.watchPosition(): Registers a handler function that will be called automatically each time the position of the
+    device changes, returning the updated location.
+    <h4>Window</h4>
+    Window is the main and most important object in the browser. It respresents browser's window. Window has many properties
+    and methods. Everything is stored in the window. Console.log(window) shows everything stored in the window.
+    <h5>Navigator</h5>
+    Navigator is an object that retreaves information. Navigator in JavaScript is an object that provides details about the 
+    browser that the user uses to access the web-application.
+    <br>
+    <br>
+    <button type="submit" onclick="Coords()">Show Current Position</button>
+    <div id="demo"></div>
+    <script>
+        var a = document.getElementById("demo");
+        function Coords(){
+            navigator.geolocation.getCurrentPosition(getcoordinates);
+        }
+        function getcoordinates(pos){
+            a.innerHTML="latitude " + pos.coords.latitude +"<br>"+ "longitude " + pos.coords.longitude;
+        
+        var latlng = new google.maps.LatLng(24.9207,67.0657);
+        var map    = new google.maps.Map (a, {
+            center: latlng,
+            zoom: 20,
+            mapTypeID: "roadmap"
+        })
+        var marker= new google.maps.Marker({
+            position:latlng,
+            map: map,
+            mapTypeID: "roadmap"
+        })
+    }
+        
+    </script>
+</body>
+</html>
